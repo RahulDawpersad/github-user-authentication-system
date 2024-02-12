@@ -1,0 +1,351 @@
+/* Reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  height: 100vh;
+  width: auto;
+}
+
+/* Preloader */
+.wrapper {
+  position: fixed;
+  background-color: #000;
+  display: grid;
+  place-items: center;
+  inset: 0;
+  height: 100vh;
+  z-index: 99999999999;
+}
+
+.svgbox {
+  --blue: rgb(148, 66, 63);
+  stroke: var(--blue);
+  stroke-width: 5;
+  fill: none;
+  stroke-dasharray: 50, 14;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 1;
+  }
+
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+
+.login-box {
+  display: grid;
+  place-items: center;
+}
+
+form {
+  display: grid;
+  place-content: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url("/img/github_bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #017aaa;
+  margin-top: 2em;
+}
+
+.github-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #03f40f;
+  margin: 1em 0;
+}
+
+/* Heading */
+.heading h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Error Alert Message */
+.error-container {
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.alert {
+  width: 20em;
+  height: 3.4em;
+  padding: 0.8em 0;
+}
+
+.alert-success,
+.alert-danger {
+  margin: 0.5em 1em;
+}
+
+.alert p {
+  margin-top: -0.5em;
+}
+
+/* inputs */
+input {
+  color: #fff;
+  font-weight: 650;
+  text-align: center;
+  outline: 0;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #017aaa;
+  width: 20em;
+  height: 2.7em;
+  margin: 0.9em;
+  transition: 0.2s ease;
+}
+
+input:focus {
+  border-bottom: 1px solid #03f40f;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 340px;
+  margin: 2em 0;
+  /* margin-left: 5em; */
+}
+
+.text-container .checkbox {
+  width: 1em;
+  height: 1em;
+  margin-top: -1.3em;
+  cursor: pointer;
+}
+
+.text-container .preference p {
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: normal;
+  width: auto;
+}
+
+/* Button Styling */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 80px;
+  gap: 15px;
+  margin: 1.5em 0;
+  background-color: #000000;
+  outline: 1px #03f40f solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  /* cursor: not-allowed; */
+  transition: 400ms;
+}
+
+.button .text {
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  margin-top: 0.9em;
+  transition: 400ms;
+}
+
+.button svg path {
+  transition: 400ms;
+}
+
+.account-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.1em 0;
+}
+
+.account-section p,
+.link .login-link {
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.account-section p {
+  color: #fff;
+  margin-top: 0.7em;
+}
+
+.link {
+  margin-top: -0.5em;
+  margin-left: 0.2em;
+}
+
+/* Password Toggle */
+.password-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 26px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 20px;
+  background-image: url("/img/myeye.svg");
+  background-size: cover;
+  cursor: pointer;
+}
+/* End of Password Toggle */
+
+.valid {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+/* Password Strength Styling */
+/* input#password-input {
+  width:180px; 
+  padding:3px;
+  color: #000;
+  float:left;
+  margin-right:10px;
+} */
+#pwd_strength_wrap {
+  color: #fff;
+  border: 1px solid #03f40f;
+  display: none;
+  float: left;
+  padding: 10px;
+  position: relative;
+  width: 270px;
+  margin-left: 2.5em;
+}
+#pwd_strength_wrap:before, #pwd_strength_wrap:after {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 10px solid transparent; /* arrow size */
+}
+#pwd_strength_wrap:before {
+border-bottom: 7px solid #03f40f;
+border-right: 7px solid #03f40f;
+border-top: 7px solid #03f40f;
+content: "";
+display: inline-block;
+left: -18px;
+position: absolute;
+top: 10px;
+}
+#pwd_strength_wrap:after {
+  border-bottom: 6px solid #03f40f;
+border-right: 6px solid #03f40f;
+border-top: 6px solid #03f40f;
+content: "";
+display: inline-block;
+left: -16px;
+position: absolute;
+top: 11px;
+}
+#pswd_info strong{
+  font-size: 1em;
+  text-align: center;
+}
+
+#pswd_info ul {
+  text-align: left;
+  list-style: none;
+  margin: 5px 18px;
+  padding: 0;
+}
+#pswd_info ul li {
+  font-size: 0.9em;
+background: url('/img/icon_pwd_strength.png') no-repeat left 2px;
+  padding: 0 0 0 20px;
+}
+#pswd_info ul li.valid {
+  background-position: left -42px;
+  color: green;
+}
+#passwordStrength {
+display: grid;
+place-items: center;
+text-align: center;
+align-items: center;
+height: 5px;
+margin-left: 2.9em;
+margin-bottom: 10px;
+transition: all 0.4s ease;
+}
+.strength0 {
+background: none; /* too short */
+width: 0px;
+}
+.strength1 {
+background: none repeat scroll 0 0 #FF4545;/* weak */
+width: 25px;
+}
+.strength2 {
+background: none repeat scroll 0 0 #FFC824;/* good */
+width: 75px;
+}
+.strength3 {
+  background: none repeat scroll 0 0 #6699CC;/* strong */
+width: 100px;
+}
+
+.strength4 {
+  background: none repeat scroll 0 0 #008000;/* best */
+width: 150px;
+}
+
+.info-icon{
+  margin-left: -1.3em;
+}
+
+.info-icon .fa-solid{
+  color: #fff;
+  cursor: pointer;
+  margin-left: -15em;
+}
+.info-icon .rule {
+  display: none; 
+}
+
+.info-icon .rule{
+  color: #fff;
+}
+
+.rule-container{
+  list-style: none;
+  text-align: left;
+  margin-left: 3.4em;
+  margin-top: -1.3em;
+}
+
+.rule-container li{
+  font-size: 0.9em;
+}
+
+@media only screen and (max-width: 600px){
+  body{
+    overflow-y: scroll;
+  }
+}

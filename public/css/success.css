@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: auto;
+}
+
+.main-container{
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.main-container .github-logo{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 1.8em 0;
+}
+
+.main-container h2{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1.5em 0;
+}
+
+.main-container .login-link{
+    padding: 10px 80px;
+    color: #fff;
+    background-color: #017aaa;
+    border: none;
+    text-decoration: none;
+    margin: 1.2em 0;
+}
+
+@media only screen and (max-width: 600px){
+    body{
+        overflow-y: hidden;
+    }
+    .main-container h2{
+        font-size: 1em;
+        font-weight: bold;
+        margin: 1.5em 0;
+    }
+}
