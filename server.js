@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs"); // Update bcrypt to bcryptjs
 const mysql = require("mysql");
 
 const app = express();
@@ -79,7 +79,7 @@ app.post("/signup", (req, res) => {
         }
       } else {
         // Hash password and store user in database
-        bcrypt.hash(password, 10, (err, hash) => {
+        bcrypt.genSalt(10, (err, salt) => { // Use bcryptjs to generate salt
           if (err) {
             res.render("signup", {
               alertMessage: "An error occurred. Please try again later.",
@@ -87,22 +87,32 @@ app.post("/signup", (req, res) => {
             return; // Return early to avoid further execution
           }
 
-          // Store user in database
-          connection.query(
-            "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-            [username, email, hash],
-            (error, results) => {
-              if (error) {
-                res.render("signup", {
-                  alertMessage: "An error occurred. Please try again later.",
-                });
-                return; // Return early to avoid further execution
-              }
-
-              // Redirect user to success page upon successful signup
-              res.redirect("/success-page");
+          // Hash password with generated salt
+          bcrypt.hash(password, salt, (err, hash) => {
+            if (err) {
+              res.render("signup", {
+                alertMessage: "An error occurred. Please try again later.",
+              });
+              return; // Return early to avoid further execution
             }
-          );
+
+            // Store user in database
+            connection.query(
+              "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+              [username, email, hash],
+              (error, results) => {
+                if (error) {
+                  res.render("signup", {
+                    alertMessage: "An error occurred. Please try again later.",
+                  });
+                  return; // Return early to avoid further execution
+                }
+
+                // Redirect user to success page upon successful signup
+                res.redirect("/success-page");
+              }
+            );
+          });
         });
       }
     }
