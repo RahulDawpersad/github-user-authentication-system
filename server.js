@@ -5,14 +5,14 @@ const bcrypt = require("bcrypt");
 const mysql = require("mysql");
 
 const app = express();
-const port = 3000;
+const port = 3306;
 
 // MySQL connection
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "userauth_db",
+  host: "b4yuuss7xlf0bq0hyv4m-mysql.services.clever-cloud.com",
+  user: "usj2jg1md8t9ub4u",
+  password: "bBLw9V6UpXHh224r84n4",
+  database: "b4yuuss7xlf0bq0hyv4m",
 });
 
 connection.connect();
